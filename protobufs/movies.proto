@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+// Represents the params expected in a request for recommendation
+message MovieRecommendationRequest {
+   string category = 1; 
+   int32 limit = 2;
+}
+
+// Model representing the structure of movies
+message Movie {
+    int32 id = 1;
+    string title = 2;
+    string category = 3;
+}
+
+// Represents the response for recommendation
+message MovieRecommendationResponse {
+   repeated Movie movies = 1;
+}
+
+// Represents movie service
+service MovieService {
+    // Reponsible for recommending movies
+    rpc recommendMovie (MovieRecommendationRequest) returns (MovieRecommendationResponse);
+}
